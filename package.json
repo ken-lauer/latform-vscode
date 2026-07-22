@@ -1,0 +1,137 @@
+{
+  "name": "latform-vscode",
+  "displayName": "Latform (Bmad lattice files)",
+  "description": "Editor support for Bmad lattice files (*.bmad, *.lat) via the latform language server.",
+  "version": "0.1.0",
+  "publisher": "ken-lauer",
+  "license": "BSD-3-Clause",
+  "author": {
+    "name": "Ken Lauer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ken-lauer/latform-vscode.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters"
+  ],
+  "keywords": [
+    "bmad",
+    "lattice",
+    "latform",
+    "accelerator",
+    "lsp"
+  ],
+  "icon": "icon.png",
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onLanguage:bmad"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "latform.restartServer",
+        "title": "Restart Language Server",
+        "category": "Latform"
+      }
+    ],
+    "languages": [
+      {
+        "id": "bmad",
+        "aliases": [
+          "Bmad",
+          "bmad"
+        ],
+        "extensions": [
+          ".bmad",
+          ".lat"
+        ],
+        "filenames": [],
+        "filenamePatterns": [
+          "*.lat.bmad"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "bmad",
+        "scopeName": "source.bmad",
+        "path": "./syntaxes/bmad.tmLanguage.json"
+      }
+    ],
+    "configuration": {
+      "title": "Latform",
+      "properties": {
+        "latform.server.command": {
+          "type": "string",
+          "default": "latform-lsp",
+          "markdownDescription": "The `latform-lsp` executable to launch. Use an absolute path if the server lives in a virtualenv that is not on your `PATH` (e.g. `/path/to/venv/bin/latform-lsp`). Installed via `pip install 'latform[lsp]'`."
+        },
+        "latform.server.args": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Additional command-line arguments passed to the server."
+        },
+        "latform.server.logLevel": {
+          "type": "string",
+          "enum": [
+            "error",
+            "warning",
+            "info",
+            "debug"
+          ],
+          "default": "warning",
+          "markdownDescription": "Server-side log verbosity. Logs appear in the **Latform Language Server** output channel (and stderr). Set to `debug` to see each request the server handles. Passed to the server as `--log-level`."
+        },
+        "latform.server.logFile": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "If set, the server writes logs to this file instead of stderr (passed as `--log-file`). Useful for capturing a full session to share in a bug report."
+        },
+        "latform.trace.server": {
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Traces the communication between VS Code and the language server."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "package": "node esbuild.js --production",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "vsix": "npm run check-types && npm run package && vsce package --no-dependencies"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vscode/vsce": "^2.24.0",
+    "esbuild": "^0.20.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.4.0"
+  },
+  "allowScripts": {
+    "esbuild@0.20.2": true
+  }
+}

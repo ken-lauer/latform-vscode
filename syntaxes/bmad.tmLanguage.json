@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Bmad",
+  "scopeName": "source.bmad",
+  "patterns": [
+    { "include": "#comment" },
+    { "include": "#string" },
+    { "include": "#statement-keyword" },
+    { "include": "#element-type" },
+    { "include": "#line-list-keyword" },
+    { "include": "#definition-name" },
+    { "include": "#attribute-index" },
+    { "include": "#number" },
+    { "include": "#operator" }
+  ],
+  "repository": {
+    "comment": {
+      "match": "!.*$",
+      "name": "comment.line.exclamation.bmad"
+    },
+    "string": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.bmad",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [{ "name": "constant.character.escape.bmad", "match": "\\\\." }]
+        },
+        {
+          "name": "string.quoted.single.bmad",
+          "begin": "'",
+          "end": "'",
+          "patterns": [{ "name": "constant.character.escape.bmad", "match": "\\\\." }]
+        }
+      ]
+    },
+    "statement-keyword": {
+      "match": "(?i)\\b(beam|calc_reference_orbit|call|combine_consecutive_elements|debug_marker|end_file|expand_lattice|merge_elements|no_digested|no_superimpose|parser_debug|print|remove_elements|return|setenv|slice_lattice|start_branch_at|title|undefined_vars_evaluate_to_zero|use|use_local_lat_file|write_digested)\\b",
+      "name": "keyword.control.bmad"
+    },
+    "line-list-keyword": {
+      "match": "(?i)\\b(line|list|overlay|group|ramper|superimpose)\\b",
+      "name": "keyword.other.bmad"
+    },
+    "element-type": {
+      "match": "(?i)\\b(ab_multipole|ac_kicker|beambeam|beginning_ele|capillary|converter|crab_cavity|crystal|custom|detector|diffraction_plate|drift|e_gun|ecollimator|elseparator|em_field|feedback|fiducial|fixer|floor_shift|foil|fork|girder|gkicker|hkicker|hybrid|instrument|kicker|lcavity|lens|marker|mask|match|mirror|monitor|multilayer_mirror|multipole|null_ele|octupole|patch|photon_fork|photon_init|pickup|pipe|quadrupole|ramper|rbend|rcollimator|rf_bend|rfcavity|sad_mult|sample|sbend|sextupole|sol_quad|solenoid|taylor|thick_multipole|undulator|vkicker|wiggler|quad)\\b",
+      "name": "storage.type.element.bmad"
+    },
+    "definition-name": {
+      "comment": "A name at the start of a definition, e.g. `q1: quadrupole` or `myvar = 3`.",
+      "match": "^\\s*([A-Za-z_][A-Za-z0-9_.]*)\\s*(?=[:=])",
+      "captures": {
+        "1": { "name": "entity.name.type.bmad" }
+      }
+    },
+    "attribute-index": {
+      "comment": "Element attribute override, e.g. `q1[k1] = 3` — highlight the attribute name.",
+      "match": "\\[\\s*([A-Za-z_][A-Za-z0-9_.]*)\\s*\\]",
+      "captures": {
+        "1": { "name": "variable.other.attribute.bmad" }
+      }
+    },
+    "number": {
+      "match": "(?i)(?<![A-Za-z0-9_])[-+]?(\\d+\\.?\\d*|\\.\\d+)(e[-+]?\\d+)?\\b",
+      "name": "constant.numeric.bmad"
+    },
+    "operator": {
+      "match": "(\\+|-|\\*|/|\\^|=|&|:|;|,)",
+      "name": "keyword.operator.bmad"
+    }
+  }
+}
