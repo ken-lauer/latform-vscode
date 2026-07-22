@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0
+## Unreleased
 
 Initial release.
 
@@ -10,3 +10,5 @@ Initial release.
   comments.
 - TextMate grammar for basic syntax highlighting.
 - Configurable server command/args and a "Restart Language Server" command.
+- Find references, completion, rename, and document/range formatting (in
+  addition to go-to-definition, hover, document symbols, and diagnostics).
