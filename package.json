@@ -37,6 +37,11 @@
         "command": "latform.restartServer",
         "title": "Restart Language Server",
         "category": "Latform"
+      },
+      {
+        "command": "latform.showFileDependencies",
+        "title": "Show File Dependencies",
+        "category": "Latform"
       }
     ],
     "languages": [

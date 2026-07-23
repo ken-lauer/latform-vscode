@@ -30,6 +30,47 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   context.subscriptions.push(
     vscode.commands.registerCommand("latform.restartServer", restart)
   );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand(
+      "latform.showFileDependencies",
+      showFileDependencies
+    )
+  );
+}
+
+interface FileDependencies {
+  tree: string;
+  mermaid: string;
+  edges: [string, string][];
+}
+
+async function showFileDependencies(): Promise<void> {
+  const editor = vscode.window.activeTextEditor;
+  if (!client || !editor || editor.document.languageId !== "bmad") {
+    return;
+  }
+  const result = await client.sendRequest<FileDependencies | null>(
+    "workspace/executeCommand",
+    {
+      command: "latform.fileDependencies",
+      arguments: [editor.document.uri.toString()],
+    }
+  );
+  if (!result) {
+    void vscode.window.showInformationMessage(
+      "latform: no file dependencies (the document did not parse)."
+    );
+    return;
+  }
+  const doc = await vscode.workspace.openTextDocument({
+    content: result.tree,
+    language: "plaintext",
+  });
+  await vscode.window.showTextDocument(doc, {
+    preview: true,
+    viewColumn: vscode.ViewColumn.Beside,
+  });
 }
 
 export async function deactivate(): Promise<void> {
