@@ -20,7 +20,10 @@ Features provided by the server:
   TextMate grammar. Defined element names are coloured as classes and beamlines
   as namespaces (so *valid* names stand out from typos), element types as
   types, attributes as properties, and builtins as functions
+- **Document highlight** — occurrences of the name under the cursor
 - **Document symbols** (outline / breadcrumbs / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd>)
+- **File dependencies** — the `call` include tree, via the **Latform: Show File
+  Dependencies** command
 - **Diagnostics** (parse errors + linter warnings), live as you type
 
 The server is **project-aware**: with a `latform.toml` declaring `top-level`
