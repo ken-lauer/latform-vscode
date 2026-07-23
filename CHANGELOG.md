@@ -10,7 +10,10 @@ Initial release.
   comments.
 - TextMate grammar for basic syntax highlighting.
 - Configurable server command/args and a "Restart Language Server" command.
-- Find references, completion, rename, and document/range formatting (in
-  addition to go-to-definition, hover, document symbols, and diagnostics).
-- Semantic highlighting from the server (names, element types, attributes,
-  builtins), layered over the TextMate grammar.
+- Find references, workspace symbols, completion, rename, and document/range
+  formatting (in addition to go-to-definition, hover, document symbols, and
+  diagnostics).
+- Semantic highlighting from the server: defined element names as classes,
+  beamlines as namespaces, element types, attributes, and builtins — with
+  TextMate-scope fallbacks so colours appear even in themes lacking explicit
+  semantic rules.

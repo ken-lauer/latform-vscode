@@ -8,6 +8,7 @@ Features provided by the server:
 
 - **Go-to-definition** for elements, lines, lists, and constants (<kbd>F12</kbd>)
 - **Find all references** across the project (<kbd>Shift</kbd>+<kbd>F12</kbd>)
+- **Workspace symbols** — jump to any name across the project (<kbd>Ctrl</kbd>+<kbd>T</kbd>)
 - **Hover** — element/constant/line definitions, attribute types & units,
   element-type keywords, and builtin functions & constants
 - **Completion** — element types, attributes (for the element's type), defined
@@ -15,8 +16,10 @@ Features provided by the server:
   (triggered on `:`, `[`, `,`, and space)
 - **Rename symbol** and all its references (<kbd>F2</kbd>)
 - **Formatting** — Format Document and Format Selection
-- **Semantic highlighting** — parser-accurate token colors (names, element
-  types, attributes, builtins), layered over the TextMate grammar
+- **Semantic highlighting** — parser-accurate token colors, layered over the
+  TextMate grammar. Defined element names are coloured as classes and beamlines
+  as namespaces (so *valid* names stand out from typos), element types as
+  types, attributes as properties, and builtins as functions
 - **Document symbols** (outline / breadcrumbs / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd>)
 - **Diagnostics** (parse errors + linter warnings), live as you type
 
