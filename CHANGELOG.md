@@ -15,6 +15,9 @@ Initial release.
   document symbols, and diagnostics).
 - **Latform: Show File Dependencies** command — opens the project's `call`
   include tree.
+- Code actions / quick fixes for lint findings (remove duplicate/unused/
+  override, use built-in constant, "did you mean" corrections) plus
+  inline/extract constant, expand abbreviation, and suppress-lint.
 - Semantic highlighting from the server: defined element names as classes,
   beamlines as namespaces, element types, attributes, and builtins — with
   TextMate-scope fallbacks so colours appear even in themes lacking explicit

@@ -24,6 +24,10 @@ Features provided by the server:
 - **Document symbols** (outline / breadcrumbs / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd>)
 - **File dependencies** — the `call` include tree, via the **Latform: Show File
   Dependencies** command
+- **Code actions / quick fixes** (💡) — remove duplicate attribute / unused
+  constant / override, "use built-in constant", "did you mean…" for unknown
+  names/types/attributes, inline/extract constant, expand abbreviation, and
+  suppress a lint
 - **Diagnostics** (parse errors + linter warnings), live as you type
 
 The server is **project-aware**: with a `latform.toml` declaring `top-level`
