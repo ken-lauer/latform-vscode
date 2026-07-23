@@ -64,6 +64,21 @@
         "path": "./syntaxes/bmad.tmLanguage.json"
       }
     ],
+    "semanticTokenScopes": [
+      {
+        "language": "bmad",
+        "scopes": {
+          "class": ["entity.name.type.class"],
+          "namespace": ["entity.name.namespace"],
+          "type": ["entity.name.type", "support.type"],
+          "property": ["variable.other.property"],
+          "function": ["support.function"],
+          "keyword": ["keyword.control"],
+          "parameter": ["variable.parameter"],
+          "variable": ["variable.other"]
+        }
+      }
+    ],
     "configuration": {
       "title": "Latform",
       "properties": {

@@ -15,6 +15,8 @@ Features provided by the server:
   (triggered on `:`, `[`, `,`, and space)
 - **Rename symbol** and all its references (<kbd>F2</kbd>)
 - **Formatting** — Format Document and Format Selection
+- **Semantic highlighting** — parser-accurate token colors (names, element
+  types, attributes, builtins), layered over the TextMate grammar
 - **Document symbols** (outline / breadcrumbs / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd>)
 - **Diagnostics** (parse errors + linter warnings), live as you type
 
@@ -22,9 +24,10 @@ The server is **project-aware**: with a `latform.toml` declaring `top-level`
 lattices (or a `tao.init`), cross-file references resolve across the tree, edits
 re-analyze quickly, and on-disk changes are picked up automatically.
 
-The extension also ships a TextMate grammar for basic syntax highlighting
-(comments, numbers, strings, element types, and statement keywords) that works
-even before the server attaches.
+The extension also ships a TextMate grammar for basic syntax highlighting that
+works even before the server attaches; once connected, the server's semantic
+tokens refine it (requires a theme with semantic highlighting enabled, the
+default).
 
 ## Requirements
 

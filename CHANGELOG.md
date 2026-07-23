@@ -12,3 +12,5 @@ Initial release.
 - Configurable server command/args and a "Restart Language Server" command.
 - Find references, completion, rename, and document/range formatting (in
   addition to go-to-definition, hover, document symbols, and diagnostics).
+- Semantic highlighting from the server (names, element types, attributes,
+  builtins), layered over the TextMate grammar.
