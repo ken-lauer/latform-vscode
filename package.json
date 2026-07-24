@@ -73,14 +73,31 @@
       {
         "language": "bmad",
         "scopes": {
-          "class": ["entity.name.type.class"],
-          "namespace": ["entity.name.namespace"],
-          "type": ["entity.name.type", "support.type"],
-          "property": ["variable.other.property"],
-          "function": ["support.function"],
-          "keyword": ["keyword.control"],
-          "parameter": ["variable.parameter"],
-          "variable": ["variable.other"]
+          "class": [
+            "entity.name.type.class"
+          ],
+          "namespace": [
+            "entity.name.namespace"
+          ],
+          "type": [
+            "entity.name.type",
+            "support.type"
+          ],
+          "property": [
+            "variable.other.property"
+          ],
+          "function": [
+            "support.function"
+          ],
+          "keyword": [
+            "keyword.control"
+          ],
+          "parameter": [
+            "variable.parameter"
+          ],
+          "variable": [
+            "variable.other"
+          ]
         }
       }
     ],
@@ -136,6 +153,7 @@
     "package": "node esbuild.js --production",
     "check-types": "tsc --noEmit",
     "lint": "eslint src",
+    "test": "vitest run",
     "vsix": "npm run check-types && npm run package && vsce package --no-dependencies"
   },
   "dependencies": {
@@ -149,7 +167,8 @@
     "@vscode/vsce": "^2.24.0",
     "esbuild": "^0.20.0",
     "eslint": "^8.56.0",
-    "typescript": "^5.4.0"
+    "typescript": "^5.4.0",
+    "vitest": "^4.1.10"
   },
   "allowScripts": {
     "esbuild@0.20.2": true

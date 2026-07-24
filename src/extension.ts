@@ -5,6 +5,7 @@ import {
   ServerOptions,
   TransportKind,
 } from "vscode-languageclient/node";
+import { buildServerArgs } from "./serverArgs";
 
 let client: LanguageClient | undefined;
 
@@ -83,17 +84,11 @@ export async function deactivate(): Promise<void> {
 function createClient(): LanguageClient {
   const config = vscode.workspace.getConfiguration("latform");
   const command = config.get<string>("server.command", "latform-lsp");
-  const args = [...config.get<string[]>("server.args", [])];
-
-  // Translate the friendlier logging settings into server CLI flags.
-  const logLevel = config.get<string>("server.logLevel", "warning");
-  if (logLevel && logLevel !== "warning") {
-    args.push("--log-level", logLevel);
-  }
-  const logFile = config.get<string>("server.logFile", "");
-  if (logFile) {
-    args.push("--log-file", logFile);
-  }
+  const args = buildServerArgs(
+    config.get<string[]>("server.args", []),
+    config.get<string>("server.logLevel", "warning"),
+    config.get<string>("server.logFile", "")
+  );
 
   const serverOptions: ServerOptions = {
     run: { command, args, transport: TransportKind.stdio },
