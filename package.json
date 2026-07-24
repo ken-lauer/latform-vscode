@@ -165,12 +165,12 @@
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
     "@vscode/vsce": "^2.24.0",
-    "esbuild": "^0.20.0",
+    "esbuild": "^0.28.0",
     "eslint": "^8.56.0",
     "typescript": "^5.4.0",
     "vitest": "^4.1.10"
   },
   "allowScripts": {
-    "esbuild@0.20.2": true
+    "esbuild@0.28.1": true
   }
 }
