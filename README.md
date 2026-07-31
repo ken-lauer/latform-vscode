@@ -1,5 +1,7 @@
 # latform-vscode
 
+Visual Studio Code Marketplace **[extension is _here_](https://marketplace.visualstudio.com/items?itemName=ken-lauer.latform-vscode)**.
+
 VS Code client for the [latform](https://github.com/ken-lauer/latform) language
 server — editor support for **Bmad lattice files** (`*.bmad`, `*.lat`,
 `*.lat.bmad`).
